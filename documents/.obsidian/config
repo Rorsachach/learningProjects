@@ -1,0 +1,22 @@
+{
+  "theme": "obsidian",
+  "pluginEnabledStatus": {
+    "file-explorer": true,
+    "global-search": true,
+    "switcher": true,
+    "graph": true,
+    "backlink": true,
+    "command-palette": true,
+    "markdown-importer": true,
+    "word-count": true,
+    "tag-pane": true,
+    "starred": true,
+    "page-preview": true,
+    "custom-css": true,
+    "templates": true,
+    "audio-recorder": true,
+    "slides": true
+  },
+  "alwaysUpdateLinks": true,
+  "autoPairMarkdown": false
+}
