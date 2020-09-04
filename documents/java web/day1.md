@@ -65,5 +65,41 @@ public class CalculatorTest {
 
     }
 }
-
 ```
+
+## 反射：框架设计的灵魂
+* 框架：半成品软件。可以在框架的基础上进行软件开发，简化编码
+* 反射：将类的各个组成部分封装为其他对象，这就是反射机制
+	* 好处：
+		1. 可以在程序运行过程中，操作这些对象
+		2. 可以解耦，提高程序扩展性
+* 获取类对象的方式：
+	1. `Class.forName("类路径")`：(第一阶段，类还未进内存时)，将字节码文件加载进内存，返回Class对象
+		* 多用于配置文件，将类名定义
+	1. `类名.class`：(第二阶段，对应的类已经被引用，加载进了内存)，通过类名class获取
+		* 多用于参数的传递
+	1. `对象.getClass`：(第三阶段，已经实例化了对象)，通过对象来`getClass()`来获取对象对应的类对象
+		* 多用于对象的获取字节码的方式
+	* 结论：
+		同一个字节吗(`*.class`)在一次程序运行过程中，只会被加载一次，不论通过哪一种方式获取`Class`对象都是同一个。
+* Class对象功能：
+	* 获取功能：
+		1. 获取成员变量
+			* `Field	getDeclaredField(String name)`
+			* `Field[]	getDeclaredFields()`
+			* `Field	getField(String name)`
+			* `Field[]	getFields()`
+		1. 获取构造方法
+			* `Constructor<T>	getConstructor(Class<?>... parameterTypes)`
+			* `Constructor<?>[]	getConstructors()`
+			* `Constructor<T>	getDeclaredConstructor(Class<?>... parameterTypes)`
+			* `Constructor<?>[]	getDeclaredConstructors()`
+		1. 获取成员方法
+			* `Method	getMethod(String name, Class<?>... parameterTypes)`
+			* `Method[]	getMethods()`
+			* `Method	getDeclaredMethod(String name, Class<?>... parameterTypes)`
+			* `Method[]	getDeclaredMethods()`
+		2. 获取类名
+			* `String	getName()`
+	
+	
