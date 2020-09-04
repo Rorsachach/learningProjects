@@ -85,21 +85,44 @@ public class CalculatorTest {
 * Class对象功能：
 	* 获取功能：
 		1. 获取成员变量
-			* `Field	getDeclaredField(String name)`
-			* `Field[]	getDeclaredFields()`
-			* `Field	getField(String name)`
-			* `Field[]	getFields()`
+			* `Field	getDeclaredField(String name)` 获取任意的成员变量
+			* `Field[]	getDeclaredFields()` 获取所有成员变量
+			* `Field	getField(String name)` 获取public修饰的成员变量
+			* `Field[]	getFields()`  获取所有public修饰的成员变量
 		1. 获取构造方法
-			* `Constructor<T>	getConstructor(Class<?>... parameterTypes)`
+			* `Constructor<T>	getConstructor(Class<?>... parameterTypes)` 获取构造方法，根据参数列表的不同进行区分
+				* 
 			* `Constructor<?>[]	getConstructors()`
 			* `Constructor<T>	getDeclaredConstructor(Class<?>... parameterTypes)`
 			* `Constructor<?>[]	getDeclaredConstructors()`
-		1. 获取成员方法
+		2. 获取成员方法
 			* `Method	getMethod(String name, Class<?>... parameterTypes)`
 			* `Method[]	getMethods()`
 			* `Method	getDeclaredMethod(String name, Class<?>... parameterTypes)`
 			* `Method[]	getDeclaredMethods()`
-		2. 获取类名
+		3. 获取类名
 			* `String	getName()`
-	
-	
+
+* `Field` 功能
+	* 获取成员变量后主要进行两种方法 `set` 和 `get`
+						1. `Object o = field.get(p);// 获取P对象中的成员变量field`
+						2. `field.set(p, 3); // 将P对象中的成员变量field设置为3`
+						
+	* 注意：在反射面前无论私有还是公有的变量均可以被访问和设置，在对私有变量进行访问和设置时需要 ==**忽略访问权限修饰符（暴力反射）**==
+
+		```java
+		Class c = Person.class;
+		Field field = c.getDeclareField("name");
+					
+
+		field.setAccessible(true);
+
+		Object o = field.get(p);
+		System.out.println(o);
+		```
+		
+		
+* `Constructor`功能
+	* 得到构造函数后可以创建对象
+		* `T	newInstance(Object... initargs)` 可以创建对象
+		* 如果使用空参数构造方法创建对象，操作可以进行简化。

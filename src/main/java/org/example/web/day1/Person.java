@@ -3,6 +3,16 @@ package org.example.web.day1;
 public class Person {
     private String name;
     private int age;
+    public int height;
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                '}';
+    }
 
     public Person(String name, int age) {
         this.name = name;
@@ -10,6 +20,14 @@ public class Person {
     }
 
     public Person() {
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public String getName() {
