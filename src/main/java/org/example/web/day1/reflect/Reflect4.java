@@ -16,6 +16,9 @@ public class Reflect4 {
         Class c = Person.class;
 
         Method setName = c.getMethod("setName", String.class);
-
+        Person p = new Person();
+        System.out.println(p);
+        setName.invoke(p, "fxy");
+        System.out.println(p);
     }
 }

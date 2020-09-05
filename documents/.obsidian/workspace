@@ -4,38 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "2391d55d2f01303c",
-        "type": "split",
-        "children": [
-          {
-            "id": "51d1967aa5e6fa69",
-            "type": "leaf",
-            "dimension": 51.10663983903421,
-            "active": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "java web/day1.md",
-                "mode": "source"
-              }
-            },
-            "group": "d4730d3598e0252b"
-          },
-          {
-            "id": "0f72aefba8b841ab",
-            "type": "leaf",
-            "dimension": 48.89336016096579,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "java web/day1.md",
-                "mode": "preview"
-              }
-            },
-            "group": "d4730d3598e0252b"
+        "id": "51d1967aa5e6fa69",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "java web/day1.md",
+            "mode": "preview"
           }
-        ],
-        "direction": "horizontal"
+        }
       }
     ],
     "direction": "vertical"
@@ -72,8 +50,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "186dea1d6131ff86",
@@ -91,8 +68,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 738
   },
   "right": {
     "id": "243c9f881cd4cf6b",
@@ -130,9 +106,9 @@
   },
   "lastOpenFiles": [
     "java web/day1.md",
-    "目录.md",
-    "java basic/catalogue.md",
-    "java basic/day1.md",
-    "java web/catalogue.md"
+    "java web/day2.md",
+    "java web/catalogue.md",
+    "java web/img/Pasted image.png",
+    "Pasted image.png"
   ]
 }

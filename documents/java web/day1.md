@@ -126,3 +126,196 @@ public class CalculatorTest {
 	* 得到构造函数后可以创建对象
 		* `T	newInstance(Object... initargs)` 可以创建对象
 		* 如果使用空参数构造方法创建对象，操作可以进行简化。
+
+* `Method` 功能
+	* `Object	invoke(Object obj, Object... args)` 执行方法
+	```java
+	public class Reflect4 {
+		public static void main(String[] args) throws Exception {
+			Class c = Person.class;
+
+			Method setName = c.getMethod("setName", String.class);
+			Person p = new Person();
+			System.out.println(p);
+			setName.invoke(p, "fxy"); // p对象使用setName方法，其中参数为"fxy"
+			System.out.println(p);
+		}
+	}
+	```
+	
+	* 案例：
+		* 需求：协议一个框架，帮助创建任意类的对象，执行任意方法
+		* 实现：
+			1. 配置文件
+			2. 反射
+		* 步骤：
+			1. 将需要创建的对象的全类名和需要执行的方法定义在配置文件中
+			2. 在程序中加载读取配置文件
+			3. 使用反射技术来加载类文件进内存
+			4. 创建对象
+			5. 执行方法
+
+## 注解
+
+* 功能：
+	* 编译检查
+	* 编写文档
+	* 代码分析
+
+* JDK中定义的注解
+	* @Override：检测是否是继承父类(接口)的
+	* @Deprecated：表示已经过时
+	* @SuppressWarnings：压制警告
+* 自定义注解
+	* 格式：
+		1. 元注解
+		2. `public @interface 注解名{}`
+	* 本质：注解的本质就是一个接口，该接口默认集成 Annotation 接口
+		`public interface org.example.web.day1.Annotation.MyAnno extends java.lang.annotation.Annotation { }`
+		![[Pasted image.png]]
+	* 属性：接口中定义的抽象方法	
+		* 要求：
+			1. 返回值类型
+				* 基本数据类型
+				* String
+				* 枚举
+				* 注解
+				* 数组
+			2. 定义了属性，在使用时需要给属性赋值
+				* `default` 可以设置默认初始化值
+				* 如果只有一个属性，且为 `value`， 则value可省略
+	* 元注解
+		用来表述注解的注解。
+		1. @Target：描述注解能够作用的位置
+			* ElementType：
+				* TYPE：作用于类
+				* METHOD：作用于方法
+				* FIELD：作用于成员变量
+		1. @Retention：描述注解被保留的阶段
+			* `@Retention(RetentionPolicy.RUNTIME)`：当前被描述的注解，会保留到class字节码文件中，并被JVM读取到，一般自定义注解均使用RUNTIME值
+		2. @Documented：描述注解会被抽取到文档
+		3. @Inherited：描述注解会被子类继承
+* 使用注解
+	通过注解来替换配置文件的操作，次部分和反射案例`ReflectDemo.java`进行对比
+	1. 获取注解定义位置的对象 Class Method Field
+	2. 获取位置对象上的注解对象 `getAnnotation()`，实际上此步创建了一个实现注解(接口)的子类
+	3. 调用注解中的抽象方法获取配置的属性值
+	
+	```java
+	@Pro(className = "org.example.web.day1.Annotation.Student", methodName = "eat")
+	public class ReflectDemo2 {
+		public static void main(String[] args) throws Exception {
+			// 1. 解析注解
+			// 获取该类的字节码文件
+			Class<ReflectDemo2> c = ReflectDemo2.class;
+			// 获取注解对象
+			// 在内存中生成了一个该注释接口的子类实现对象
+			Pro pro = c.getAnnotation(Pro.class);
+			// 调用注解对象中定义的抽象方法，获取返回值
+			String className = pro.className();
+			String methodName = pro.methodName();
+
+			Class cls = Class.forName(className);
+			Constructor constructor = cls.getConstructor();
+			Object o = constructor.newInstance();
+			cls.getMethod(methodName).invoke(o);
+		}
+	}
+	```
+	```java
+	@Target(ElementType.TYPE)
+	@Retention(RetentionPolicy.RUNTIME)
+	public @interface Pro {
+		String className();
+		String methodName();
+	}
+	```
+
+* 注解实例
+	简单的测试框架
+```java
+package org.example.web.day1.Annotation;
+
+import java.lang.reflect.Method;
+
+/**
+ * @author: 卑微小冯
+ * Date: 2020/9/5 上午7:49
+ * Project: learningProjects
+ * Package: org.example.web.day1.Annotation
+ *
+ * 当方法执行后，会自动检测所有家了check注解的方法，判断方法是否有异常
+ */
+
+public class TestCheck {
+    public static void main(String[] args) {
+        //1. 创建计算器对象
+        TestCalc calc = new TestCalc();
+        Class c = calc.getClass();
+
+        Method[] methods = c.getMethods();
+
+        int num = 0;
+
+        for (Method method : methods) {
+            if(method.isAnnotationPresent(Check.class)){
+                try{
+                    method.invoke(calc, 1,0);
+                }catch (Exception e){
+                    System.out.println("第"+num+"个方法出异常了");
+                    System.out.println("异常名称"+e.getCause().getClass().getSimpleName());
+                    System.out.println("异常原因"+e.getCause().getMessage());
+                }
+                num++;
+            }
+        }
+
+        System.out.println(num);
+    }
+}
+```
+
+```java
+package org.example.web.day1.Annotation;
+
+/**
+ * @author: 卑微小冯
+ * Date: 2020/9/5 上午7:51
+ * Project: learningProjects
+ * Package: org.example.web.day1.Annotation
+ */
+
+public class TestCalc {
+    @Check
+    public int add(int a, int b){
+        return a/b;
+    }
+
+    @Check
+    public int sub(int a, int b){
+        return a-b;
+    }
+
+    @Check
+    public int mul(int a, int b){
+        return a*b;
+    }
+
+    @Check
+    public int div(int a, int b){
+        return a/b;
+    }
+
+    @Check
+    public void show(int a, int b){
+        System.out.println("ending...");
+    }
+}
+```
+
+## 小结
+* 大多数时候，我们会使用注解，而不是自定义注解
+* 注解给谁用？
+	1. 编译器
+	2. 给解析程序用
+* 注解不是程序的一部分，可以理解为注解就是一个标签

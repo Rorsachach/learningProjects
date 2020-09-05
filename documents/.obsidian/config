@@ -18,5 +18,6 @@
     "slides": true
   },
   "alwaysUpdateLinks": true,
-  "autoPairMarkdown": false
+  "autoPairMarkdown": false,
+  "attachmentFolderPath": "java web/Untitled"
 }
