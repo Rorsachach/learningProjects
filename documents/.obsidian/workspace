@@ -4,16 +4,36 @@
     "type": "split",
     "children": [
       {
-        "id": "51d1967aa5e6fa69",
-        "type": "leaf",
-        "active": true,
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "java web/day1.md",
-            "mode": "preview"
+        "id": "267f48d3403ebc74",
+        "type": "split",
+        "children": [
+          {
+            "id": "51d1967aa5e6fa69",
+            "type": "leaf",
+            "active": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "java web/day2.md",
+                "mode": "source"
+              }
+            },
+            "group": "03f7be671b486b4a"
+          },
+          {
+            "id": "143c8cb75b093fdc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "java web/day2.md",
+                "mode": "preview"
+              }
+            },
+            "group": "03f7be671b486b4a"
           }
-        }
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -68,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 738
+    "width": 245
   },
   "right": {
     "id": "243c9f881cd4cf6b",
@@ -84,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "java web/day1.md"
+                "file": "java web/day2.md"
               }
             }
           },
@@ -105,10 +125,10 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "java web/day1.md",
     "java web/day2.md",
-    "java web/catalogue.md",
-    "java web/img/Pasted image.png",
-    "Pasted image.png"
+    "java web/day1.md",
+    "java web/img/Pasted image 1.png",
+    "Pasted image.png",
+    "Pasted image 1.png"
   ]
 }
