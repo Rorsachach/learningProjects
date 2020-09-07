@@ -1,4 +1,4 @@
-package org.example.web.day2;
+package org.example.web.day2.JDBC;
 
 import java.sql.Connection;
 import java.sql.SQLException;
