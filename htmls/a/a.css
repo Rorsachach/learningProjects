@@ -1,0 +1,73 @@
+body{
+    background: url("pexels-simon-migaj-747964.jpg") no-repeat center;
+}
+
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+.rg_layout{
+    width: 70%;
+    height: 900px;
+    border: 5px solid #ecf0f1;
+    background-color: white;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.rg_left{
+    border: 1px solid red;
+    float: left;
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+.rg_left p:first-child{
+    font-size: 25px;
+    font-weight: bold;
+    color: orange;
+}
+
+.rg_left p:last-child{
+    font-size: 23px;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #aaaaaa
+}
+
+.rg_center{
+    border: 1px solid red;
+    float: left;
+    margin-top: 100px;
+    margin-left: 240px;
+
+    width: 450px;
+    height: 700px;
+}
+
+.rg_center td{
+    width: 450px;
+    padding-top: 20px;
+
+}
+
+.rg_center td input{
+    height: 20px;
+}
+
+.rg_right{
+    border: 1px solid red;
+    float: right;
+    margin-top: 25px;
+    margin-right: 25px;
+}
+
+.rg_right p:first-child{
+    font-size: 14px;
+}
+
+.rg_right p a{
+    margin: 4px;
+}

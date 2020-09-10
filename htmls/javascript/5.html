@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="imgBox" src="img/1.jpg" width="70%">
+
+    <script>
+        var num = 0;
+        function fun(){
+            num = (num+1) % 4;
+            var img = document.getElementById("imgBox");
+            img.src="img/"+(num+1)+".jpg";
+        }
+
+        setInterval(fun, 3000);
+    </script>
+</body>
+</html>

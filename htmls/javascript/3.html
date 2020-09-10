@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="img/off.png" id="light">
+
+    <script>
+        var light = document.getElementById("light");
+        var flag = false;
+        light.onclick = function(){
+            if(!flag){
+                light.src = "img/on.png";
+                flag = true;
+            }
+            else{
+                light.src = "img/off.png";
+                flag = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

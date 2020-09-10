@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="打开网页" id="btn">
+    <input type="button" value="关闭网页" id="btn2">
+    <script>
+        var btn = document.getElementById("btn");
+        var wind;
+        btn.onclick = function(){
+            wind = open("https://www.pexels.com");
+        }
+
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function(){
+            wind.close();
+        }
+        
+    </script>
+</body>
+</html>
